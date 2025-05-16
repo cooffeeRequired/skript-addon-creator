@@ -1,80 +1,103 @@
 # Skript Addon Creator
 
-Nástroj pro snadné vytváření Skript addonů pro Minecraft.
+A tool for easy creation of Skript addons for Minecraft.
 
-## Instalace
+## Installation
 
 ### Windows
-1. Stáhněte `install.bat`
-2. Spusťte `install.bat` jako administrátor
-3. Počkejte na dokončení instalace
+1. Download `create_addon.bat`
+2. Run `create_addon.bat` as administrator
+3. Wait for the installation to complete
 
 ### Linux/macOS
-1. Stáhněte `install.sh`
-2. Otevřete terminál v adresáři se staženým souborem
-3. Spusťte:
+1. Download `create_addon.sh`
+2. Open a terminal in the directory with the downloaded file
+3. Run:
    ```bash
-   chmod +x install.sh
-   ./install.sh
+   chmod +x create_addon.sh
+   ./create_addon.sh
    ```
 
-## Použití
+## Usage
 
-1. Spusťte skript:
+1. Run the script:
    ```bash
-   python create_addon.py
+   python src/main.py
+   ```
+   or on Windows:
+   ```cmd
+   create_addon.bat
+   ```
+   or on Linux/macOS:
+   ```bash
+   ./create_addon.sh
    ```
 
-2. Postupujte podle instrukcí:
-   - Zadejte název addonu
-   - Vyberte package name
-   - Vyberte implementaci (Paper/Spigot)
-   - Vyberte verzi Javy
-   - Vyberte verzi Minecraftu
-   - Vyberte verzi Skriptu
-   - Nakonfigurujte Git (volitelné)
+2. Follow the instructions:
+   - Enter the addon name
+   - Enter the package name
+   - Select implementation (Paper/Spigot)
+   - Select Java version
+   - Select Minecraft version
+   - Select Skript version
+   - Configure Git (optional)
 
-3. Po dokončení najdete vytvořený addon v novém adresáři
+3. After completion, you will find the created addon in a new directory.
 
-## Vytvoření release
+## Usage Example
 
-1. Nastavte proměnné prostředí:
+```bash
+$ python src/main.py
+=== Skript Addon Creator ===
+Create a new Skript addon for Minecraft
+[?] Addon name (e.g. MySkriptAddon): MyAddon
+[?] Base package (e.g. com.example.myaddon): com.example.myaddon
+[?] Implementation: paper
+[?] Java version: 17
+[?] Minecraft version: 1.20.4
+[?] Skript version: 2.7.3
+[?] Do you want to initialize Git repository?: No
+[+] Addon 'MyAddon' was successfully created in: /path/to/MyAddon
+```
+
+## Creating a Release
+
+1. Set environment variables:
    ```bash
-   export GITHUB_TOKEN="váš_token"
-   export GITHUB_REPOSITORY="uživatel/repozitář"
+   export GITHUB_TOKEN="your_token"
+   export GITHUB_REPOSITORY="username/repository"
    ```
 
-2. Vytvořte soubor s popisem release (např. `2.8.2.md`)
+2. Create a release description file (e.g. `2.8.2.md`)
 
-3. Spusťte příkaz:
+3. Run the command:
    ```bash
    ./gradlew release -Pversion="2.8.2-pre" -Pdescription="2.8.2.md" -Pprerelease=true
    ```
 
-## Struktura projektu
+## Project Structure
 
-```
+```text
 src/
-  ├── addon_creator.py  # Hlavní třída pro vytváření addonů
-  ├── templates.py      # Šablony pro generování souborů
-  └── main.py          # Vstupní bod programu
-installers/
-  ├── install.sh       # Instalační skript pro Linux/macOS
-  └── install.bat      # Instalační skript pro Windows
+  ├── addon_creator.py  # Main class for addon creation
+  ├── templates.py      # Templates for file generation
+  └── main.py           # Program entry point
+create_addon.sh         # Installer for Linux/macOS
+create_addon.bat        # Installer for Windows
 ```
 
-## Požadavky
+## Requirements
 
 - Python 3.6+
 - pip
-- Git (volitelné)
+- Git (optional)
 
-## Závislosti
+## Dependencies
 
 - requests
 - inquirer
 - colorama
 
-## Licence
+## License
 
 MIT 
